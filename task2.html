@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <title>Awesome To Do List</title>
+                <link href="https://stackpath.bootstrapcdn.com/
+                font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+                <link rel="stylesheet" href="style.css">
+               </head>
+               <body>
+                <div class="container">
+                        <div class="addTask">
+                                <input type="text" placeholder="Add a Task">
+                                <button>Add</button>
+                        </div>
+                        
+                        <ol class="not Completed">
+                                <h3>not Completed</h3>
+                                <li>Task
+                                        <button><i class="fa fa-check"></i></button>
+                                        <button><i class="fa fa-trash"></i></button>
+                                </li>
+                        </ol>
+
+                        <ol class="Completed">
+                                <h3>Completed</h3>
+                                <li>Task
+                                        <button><i class="fa fa-trash"></i></button>
+                                </li>
+                        </ol>
+                </div>
+                <script>
+                        const input = document.querySelector('input');
+                        const btn = document.querySelector('.addTask > button');
+  
+
+                        btn.addEventListener('click', addList);
+                        input.addEventListener('keyup',(e)=>{
+                                (e.keycode === 13 ? addList(e) : null);
+                        })
+
+                        function addList(e) {
+                                const notCompleted = document.querySelector('.notCompleted');
+                                const Completed = document.querySelector('.Completed');
+
+                                const newLi = document.createElement('li');
+                                const checkbtn = document.createElement('button');
+                                const delBtn = document.createElement('button');
+
+
+                                checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+                                delBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+
+                                if(input.value !==''){
+                                        NewLi.textcontent = input.value;
+                                        input.value = '';
+                                        notCompleted.appenChild(newLi);
+                                        newLi.appendChild(checkbtn);
+                                        newLi.appendChild(delbtn);
+
+                                }
+
+                                checkbtn.addEventListener('click', function(){
+                                        const parent = this.parentNode;
+                                        parent.remove();
+                                        Completed.appendChild(parent);
+                                        checkbtn.style.display ='none';
+                                });
+
+
+                                delbtn.addEventListener('click',function(){
+                                        const parent = this.parentNode;
+                                        parent.remove();
+                                        Completed.appendChild(parent);
+                                        delbtn.style.display='none';
+                                });
+                        }  
+                </script>
+               </body>
+</html>
